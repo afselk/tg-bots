@@ -13,14 +13,14 @@ client = TelegramClient("session_name", api_id, api_hash)
 target_chat_id = None
 forwarding_enabled = False
 
-@client.on(events.NewMessage(pattern='forward start'))
+@client.on(events.NewMessage(pattern='tg chat load start'))
 async def start_forwarding(event):
     global target_chat_id, forwarding_enabled
     target_chat_id = event.chat_id
     forwarding_enabled = True
     await event.reply("Forwarding started. Messages from selected channels will be forwarded here.")
 
-@client.on(events.NewMessage(pattern='forward stop'))
+@client.on(events.NewMessage(pattern='tg chat load stop'))
 async def stop_forwarding(event):
     global forwarding_enabled
     forwarding_enabled = False

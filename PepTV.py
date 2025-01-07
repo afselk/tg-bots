@@ -21,7 +21,7 @@ def choose_and_remove(elements, weights):
     weight = weights.pop(index)
     return chosen, weight
 
-@client.on(events.NewMessage(pattern="show start"))
+@client.on(events.NewMessage(pattern="tv start"))
 async def start_schedule(event):
     chat_id = event.chat_id
 
@@ -40,19 +40,18 @@ async def start_schedule(event):
         while chat_id in active_schedules:
             try:
                 chosen_prompts,chosen_weight=choose_and_remove(available_prompts_with_weights["available_prompts"], available_prompts_with_weights["weights"])
-                if not last_removed_prompt and not None:
+                if last_removed_prompt and last_removed_weight:
                     available_prompts_with_weights["available_prompts"].append(last_removed_prompt)
                     available_prompts_with_weights["weights"].append(last_removed_weight)
-                last_removed_prompt=chosen_prompts
-                last_removed_weight=last_removed_weight
-                print(f"[DEBUG] Sending news summary request to chat_id: {chat_id}")
-
-                await client.send_message(
-                    chat_id,
-                    random.choice(chosen_prompts)
-                )
-                await asyncio.sleep(sleep_time)
-
+                if chosen_prompts and chosen_weight:
+                    last_removed_prompt=chosen_prompts
+                    last_removed_weight=chosen_weight
+                    print(f"[DEBUG] Sending request to chat_id: {chat_id}")
+                    await client.send_message(
+                        chat_id,
+                        random.choice(chosen_prompts)
+                    )
+                    await asyncio.sleep(sleep_time)
             except FloodWaitError as e:
                 print(f"[WARNING] Rate limited. Sleeping for {e.seconds} seconds.")
                 await asyncio.sleep(e.seconds)
@@ -61,7 +60,7 @@ async def start_schedule(event):
 
     active_schedules[chat_id] = asyncio.create_task(send_message())
 
-@client.on(events.NewMessage(pattern="show stop"))
+@client.on(events.NewMessage(pattern="tv stop"))
 async def stop_schedule(event):
     chat_id = event.chat_id
 
