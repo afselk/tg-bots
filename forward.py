@@ -1,9 +1,11 @@
 from telethon import TelegramClient, events
 
 # Initialize the Telegram client
-api_id = "..."
-api_hash = "..."
-phone = "+7..."
+import os
+
+api_id = os.environ.get('api_id')
+api_hash = os.environ.get('api_hash')
+phone = os.environ.get('phone')
 
 client = TelegramClient("session_name", api_id, api_hash)
 

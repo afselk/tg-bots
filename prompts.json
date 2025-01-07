@@ -1,0 +1,11 @@
+{"available_prompts":[
+    ["@PepTVbot create an audio message summarizing the news from the past 5 minutes in the style of a live TV presenter. Don't forget about your tone of voice but keep it natural, engaging, and concise, with no hashtags to ensure clarity for listeners. Limit the message to 2 paragraphs, 80 words tops.Don't start it with the word *breaking*"],
+    ["Create a voice message in which you first briefly retell several last news in your own words, and then give a couple of comments in your own style. it should sound like a TV show."],
+    ["Remind everyone that everything mentioned here is not a financial advice and they have to analyse themselves before making any decisions."],
+    ["Tell them about the BAD Empire"],
+    ["Tell them about BAD as a project"],
+    ["Joke"],
+    ["Tell them about one of BAD's partners"],
+    ["Take the latest 10 messages from the BAD community telegram group and comment on them"]
+],
+"weights":[5,5,1,1,1,1,1,1]}

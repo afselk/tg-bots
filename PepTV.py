@@ -1,13 +1,25 @@
 from telethon import TelegramClient, events
 import asyncio
 from telethon.errors.rpcerrorlist import FloodWaitError
+import os
+import json
+import random
 
-api_id = "..."
-api_hash = "..."
-phone = "+7..."
+api_id = os.environ.get('api_id')
+api_hash = os.environ.get('api_hash')
+phone = os.environ.get('phone')
 
 client = TelegramClient("session_name", api_id, api_hash)
 active_schedules = {}
+sleep_time=30
+
+
+def choose_and_remove(elements, weights):
+    chosen = random.choices(elements, weights=weights, k=1)[0]
+    index = elements.index(chosen)
+    elements.pop(index)
+    weight = weights.pop(index)
+    return chosen, weight
 
 @client.on(events.NewMessage(pattern="show start"))
 async def start_schedule(event):
@@ -19,33 +31,33 @@ async def start_schedule(event):
 
     await event.reply("kk")
 
+
     async def send_message():
-        try:
-            while chat_id in active_schedules:
+        with open('prompts.json', 'r', encoding='utf-8') as file:
+            available_prompts_with_weights = json.load(file)
+        last_removed_prompt = []
+        last_removed_weight = None
+        while chat_id in active_schedules:
+            try:
+                chosen_prompts,chosen_weight=choose_and_remove(available_prompts_with_weights["available_prompts"], available_prompts_with_weights["weights"])
+                if not last_removed_prompt and not None:
+                    available_prompts_with_weights["available_prompts"].append(last_removed_prompt)
+                    available_prompts_with_weights["weights"].append(last_removed_weight)
+                last_removed_prompt=chosen_prompts
+                last_removed_weight=last_removed_weight
                 print(f"[DEBUG] Sending news summary request to chat_id: {chat_id}")
-                # First message
+
                 await client.send_message(
                     chat_id,
-                    "@PepTVbot create an audio message summarizing the news from the past 5 minutes in the style of a live TV presenter. "
-                    "Don't forget about your tone of voice but keep it natural, engaging, and concise, with no hashtags to ensure clarity for listeners. "
-                    "Limit the message to 2 paragraphs, 80 words tops."
-                    "Don't start it with the word *breaking*"
+                    random.choice(chosen_prompts)
                 )
-                await asyncio.sleep(120)  # Wait 60 seconds
-                
-                print(f"[DEBUG] Sending filler joke request to chat_id: {chat_id}")
-                # Second message
-                await client.send_message(
-                    chat_id,
-                    "@PepTVbot you're a live TV presenter. Awkward silence is in the studio. Create an engaging audio message with a joke in your style towards listeners to fill in the awkward silence. The joke needs to be sharp, biting, and hit right at the heart of those crypto wannabe edgelords who laugh at every dumb gag about currency."
-                    "Limit the message to a length of a short tweet, 30 words tops."
-                )
-                await asyncio.sleep(120)  # Wait 60 seconds for the next cycle
-        except FloodWaitError as e:
-            print(f"[WARNING] Rate limited. Sleeping for {e.seconds} seconds.")
-            await asyncio.sleep(e.seconds)
-        except Exception as e:
-            print(f"[ERROR] Error in send_message: {e}")
+                await asyncio.sleep(sleep_time)
+
+            except FloodWaitError as e:
+                print(f"[WARNING] Rate limited. Sleeping for {e.seconds} seconds.")
+                await asyncio.sleep(e.seconds)
+            except Exception as e:
+                print(f"[ERROR] Error in send_message: {e}")
 
     active_schedules[chat_id] = asyncio.create_task(send_message())
 
