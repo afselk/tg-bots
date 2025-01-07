@@ -10,7 +10,7 @@ api_hash = os.environ.get('api_hash')
 
 client = TelegramClient("session_name", api_id, api_hash)
 active_schedules = {}
-sleep_time=30
+sleep_time=45
 
 
 def choose_and_remove(elements, weights):
