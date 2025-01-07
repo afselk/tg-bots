@@ -70,14 +70,22 @@ async def stop_all_forwarding(event):
 @client.on(events.NewMessage())
 async def forward_messages(event):
     global target_chat_ids
-    print(target_chat_ids)
-    print(event.chat_id)
     if str(event.chat_id) in target_chat_ids.keys():
-        target_chat_ids[str(event.chat_id)]["messages"].append(event.message)
+
+        if event.sender:
+            sender = await event.get_sender()
+            author_name = sender.first_name or sender.username or "Unknown"
+        elif event.message.fwd_from:
+            author_name=(event.message.fwd_from.from_name or event.message.fwd_from.channel_post)
+        else:
+            author_name = "Unknown"
+
+        target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"message":event.message.message})
+
         if len(target_chat_ids[str(event.chat_id)]["messages"])>=deliver_message:
             for forward_to in target_chat_ids[str(event.chat_id)]["forward_to"]:
                 try:
-                    await client.forward_messages(int(forward_to), target_chat_ids[str(event.chat_id)]["messages"])
+                    await client.send_message(int(forward_to), str(target_chat_ids[str(event.chat_id)]["messages"]))
                 except Exception as e:
                     print(f"[DEBUG] Failed sending request to chat_id: {e}")
             target_chat_ids[str(event.chat_id)]["messages"]=[]
