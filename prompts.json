@@ -23,12 +23,6 @@
     "@PepTVbot, say the mysteries of the BAD Empire. Keep it vivid and dynamic and nasty, like you're hosting an adventure series. Keep it concise—one paragraph max. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
     "@PepTVbot, summarize the story of the BAD Empire. Focus on the most striking aspects to draw the audience in, like a true storyteller and be nasty as fuck. Keep it concise—one paragraph max. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing."
     ],
-    ["@PepTVbot, explain BAD as a project. Highlight its purpose, unique aspects, and why it stands out in an engaging way. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
-    "@PepTVbot, tell some interesting fact about BAD as project. Share its key features and give a concise overview that grabs attention. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
-    "@PepTVbot, say about BAD as a project. Present it like a compelling story, covering what makes it exciting and noteworthy. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
-    "@PepTVbot, share thoughts about BAD as a project. Make it sound insightful and engaging, like you’re hosting a project showcase. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
-    "@PepTVbot, describe BAD as a project. Share its vision and details in a way that feels like an inspiring introduction. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing."
-    ],
     ["@PepTVbot, tell a short and sharp joke to lift the mood. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
     "@PepTVbot, say a quick and witty joke to add some humor to the mix. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
     "@PepTVbot, share a nasty joke to brighten their day. Keep it concise—one paragraph max and be nasty as fuck. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing.",
@@ -40,4 +34,4 @@
     "@PepTVbot, tell about one of BAD’s partners. Describe their importance to the project and why the partnership works. Keep it concise—one paragraph max. Try to not repeat yourself, check what your previous messages in the history and try to not speak about the same thing."
     ]
 ],
-"weights":[12,4,1,6,4,4]}
+"weights":[10,4,1,4,4]}
