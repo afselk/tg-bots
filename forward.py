@@ -19,6 +19,12 @@ def is_negative_number(s):
     except ValueError:
         return False
 
+def check_forward_type(event):
+    if (event.message.text.split(':')[2]).replace(" ","")=='batch':
+        forward_type ="batch_forward_to"
+    else:
+        forward_type = "direct_forward_to"
+    return forward_type
 async def get_channel_id(channel_username):
     try:
         if str(channel_username).isdigit() or str(channel_username).startswith('-100') or is_negative_number(channel_username):
@@ -33,26 +39,31 @@ async def get_channel_id(channel_username):
 @client.on(events.NewMessage(pattern='tg chat load start:'))
 async def start_forwarding(event):
     global target_chat_ids,deliver_message
-    new_chat_to_forward= await get_channel_id((event.message.text.split(':')[-1]).replace(" ",""))
+    new_chat_to_forward= await get_channel_id((event.message.text.split(':')[1]).replace(" ",""))
+    forward_type=check_forward_type(event)
+
     if new_chat_to_forward not in target_chat_ids.keys():
-        target_chat_ids[new_chat_to_forward]={"forward_to":[str(event.chat_id)],"messages":[]}
+        target_chat_ids[new_chat_to_forward]={"batch_forward_to":[],"direct_forward_to":[],"messages":[]}
+        target_chat_ids[new_chat_to_forward][forward_type].append(str(event.chat_id))
         await event.reply("Forwarding started. Messages from provided channel will be forwarded here.")
     else:
-        if event.chat_id not in target_chat_ids[new_chat_to_forward]["forward_to"]:
-            target_chat_ids[new_chat_to_forward]["forward_to"].append(str(event.chat_id))
+        if event.chat_id not in target_chat_ids[new_chat_to_forward][forward_type]:
+            target_chat_ids[new_chat_to_forward]["batch_forward_to"].append(str(event.chat_id))
             await event.reply("Forwarding started. Messages from provided channel will be forwarded here.")
         else:
             await event.reply("Forwarded already")
 @client.on(events.NewMessage(pattern='tg chat load stop:'))
 async def stop_forwarding(event):
     global target_chat_ids
-    new_chat_to_forward = await get_channel_id((event.message.text.split(':')[-1]).replace(" ", ""))
+    new_chat_to_forward = await get_channel_id((event.message.text.split(':')[1]).replace(" ", ""))
+    forward_type=check_forward_type(event)
+
     if new_chat_to_forward in target_chat_ids.keys():
-        if str(event.chat_id) not in target_chat_ids[new_chat_to_forward]["forward_to"]:
+        if str(event.chat_id) not in target_chat_ids[new_chat_to_forward][forward_type]:
             await event.reply("You are not forwarding this chanel")
         else:
-            target_chat_ids[new_chat_to_forward]["forward_to"].remove(str(event.chat_id))
-            if len(target_chat_ids[new_chat_to_forward]["forward_to"])==0:
+            target_chat_ids[new_chat_to_forward][forward_type].remove(str(event.chat_id))
+            if len(target_chat_ids[new_chat_to_forward]["batch_forward_to"])==0 and len(target_chat_ids[new_chat_to_forward]["direct_forward_to"])==0:
                 del(target_chat_ids[new_chat_to_forward])
             await event.reply("Forwarding stopped. Messages from provided channel will no longer be forwarded.")
     else:
@@ -62,14 +73,17 @@ async def stop_forwarding(event):
 async def stop_all_forwarding(event):
     global target_chat_ids
     for chat_id in target_chat_ids.keys():
-        if str(event.chat_id) in target_chat_ids[chat_id]["forward_to"]:
-            target_chat_ids[chat_id]["forward_to"].remove(str(event.chat_id))
-            if len(target_chat_ids[chat_id]["forward_to"]) == 0:
-                del (target_chat_ids[chat_id])
+        for forward_type in ["batch_forward_to","direct_forward_to"]:
+            if str(event.chat_id) in target_chat_ids[chat_id][forward_type]:
+                target_chat_ids[chat_id][forward_type].remove(str(event.chat_id))
+
+        if len(target_chat_ids[chat_id]["batch_forward_to"]) == 0 and len(target_chat_ids[chat_id]["direct_forward_to"]) == 0:
+            del (target_chat_ids[chat_id])
     await event.reply("You are stopped forwarding all channels")
 @client.on(events.NewMessage())
 async def forward_messages(event):
     global target_chat_ids
+    print (target_chat_ids)
     if str(event.chat_id) in target_chat_ids.keys():
 
         if event.sender:
@@ -82,10 +96,15 @@ async def forward_messages(event):
 
         target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"message":event.message.message})
 
+        for target_chat_id in target_chat_ids[str(event.chat_id)]["direct_forward_to"]:
+            try:
+                await client.forward_messages(int(target_chat_id), event.message)
+            except Exception as e:
+                print(f"[DEBUG] Failed sending request to chat_id: {e}")
         if len(target_chat_ids[str(event.chat_id)]["messages"])>=deliver_message:
-            for forward_to in target_chat_ids[str(event.chat_id)]["forward_to"]:
+            for forward_to in target_chat_ids[str(event.chat_id)]["batch_forward_to"]:
                 try:
-                    await client.send_message(int(forward_to), str(target_chat_ids[str(event.chat_id)]["messages"]))
+                    await client.send_message(int(forward_to), "The following are new messages from the Telegram chats: "+str(target_chat_ids[str(event.chat_id)]["messages"]))
                 except Exception as e:
                     print(f"[DEBUG] Failed sending request to chat_id: {e}")
             target_chat_ids[str(event.chat_id)]["messages"]=[]
