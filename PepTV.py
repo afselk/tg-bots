@@ -7,7 +7,6 @@ import random
 
 api_id = os.environ.get('api_id')
 api_hash = os.environ.get('api_hash')
-phone = os.environ.get('phone')
 
 client = TelegramClient("session_name", api_id, api_hash)
 active_schedules = {}

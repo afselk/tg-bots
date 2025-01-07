@@ -1,6 +1,6 @@
 {"available_prompts":[
     ["@PepTVbot create an audio message summarizing the news from the past 5 minutes in the style of a live TV presenter. Don't forget about your tone of voice but keep it natural, engaging, and concise, with no hashtags to ensure clarity for listeners. Limit the message to 2 paragraphs, 80 words tops.Don't start it with the word *breaking*",
-    "@PepTVbot, could you create an audio message of the last 5 minutes of news in the style of a charismatic TV anchor? Keep it crisp, friendly, and easy to follow. Two short paragraphs, up to 80 words, should do the trick. Avoid hashtags and steer clear of starting with 'breaking.'",
+    "@PepTVbot, could you create an audio message of the last 5 minutes of news in the style of a charismatic TV anchor? Keep it crisp, nasty, and easy to follow. Two short paragraphs, up to 80 words, should do the trick. Avoid hashtags and steer clear of starting with 'breaking.'",
     "@PepTVbot, summarize the news from the past 5 minutes as if hosting a fast-paced live segment and create an audio message. Bring energy and professionalism while keeping it simple and concise. Skip hashtags, and craft two engaging paragraphs, max 80 words. Avoid starting with 'breaking.",
     "@PepTVbot, create an audio message and imagine you're a trusted news anchor—summarize the latest 5 minutes of updates in a warm and conversational tone. Stick to two clear paragraphs within 80 words. No need for hashtags, and please don’t begin with 'breaking.",
     "@PepTVbot, create an audio message and summarize the last 5 minutes of events like you’re on air for a live TV broadcast. Use a steady, engaging tone, and ensure the message flows smoothly. Keep it brief—two paragraphs under 80 words, no hashtags, and skip the word 'breaking."
@@ -14,7 +14,7 @@
     ["@PepTVbot, create a voice message and remind everyone that everything mentioned here is not a financial advice and they have to analyse themselves before making any decisions",
     "@PepTVbot, create a voice message with a reminder: nothing discussed here should be considered financial advice. Always do your own research and evaluate carefully before making any decisions.",
     "@PepTVbot, create a voice message and remind everyone that none of this is intended to be financial advice. Be sure to assess the details on your own and make informed decisions.",
-    "@PepTVbot, create a voice message and tell that don’t forget, nothing mentioned here should be taken as financial advice. Always conduct your own research and think critically before making any moves.",
+    "@PepTVbot, create a voice message and tell everybody in your style to  never forget that nothing mentioned here should be taken as financial advice. Always conduct your own research and think critically before making any moves.",
     "@PepTVbot, create a voice message and tell a quick heads-up: this content is not financial advice. Always ensure that you conduct your own analysis and make well-informed decisions."
     ],
     ["@PepTVbot, create a voice message where you share the story of the BAD Empire.",
@@ -24,14 +24,14 @@
     "@PepTVbot, summarize the story of the BAD Empire in a voice message. Focus on the most striking aspects to draw the audience in, like a true storyteller."
     ],
     ["@PepTVbot, create a voice message explaining BAD as a project. Highlight its purpose, unique aspects, and why it stands out in an engaging way.",
-    "@PepTVbot, create a voice message that introduces BAD as a project. Share its key features and give a concise overview that grabs attention.",
+    "@PepTVbot, create a voice message that tells some interesting fact about BAD as project. Share its key features and give a concise overview that grabs attention.",
     "@PepTVbot, create a voice message about BAD as a project. Present it like a compelling story, covering what makes it exciting and noteworthy.",
     "@PepTVbot, create a voice message exploring BAD as a project. Make it sound insightful and engaging, like you’re hosting a project showcase.",
     "@PepTVbot, create a voice message describing BAD as a project. Share its vision and details in a way that feels like an inspiring introduction."
     ],
     ["@PepTVbot, create a voice message with a short and sharp joke to lift the mood.",
     "@PepTVbot, create a voice message with a quick and witty joke to add some humor to the mix.",
-    "@PepTVbot, create a voice message and share a funny joke to brighten their day.",
+    "@PepTVbot, create a voice message and share a nasty joke to brighten their day.",
     "@PepTVbot, create a voice message with a clever and nasty joke to make everyone laugh"
     ],
     ["@PepTVbot, create a voice message and introduce one of BAD's partners. Share some interesting details about their collaboration.",
@@ -47,4 +47,4 @@
     "@PepTVbot, take the most recent 10 messages from the BAD community Telegram group and provide commentary in a voice message."
     ]
 ],
-"weights":[3,3,1,1,1,1,1,1]}
+"weights":[4,4,2,1,3,2,2,2]}
