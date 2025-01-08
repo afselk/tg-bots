@@ -10,7 +10,7 @@ api_hash = os.environ.get('api_hash')
 
 client = TelegramClient("session_name", api_id, api_hash)
 active_schedules = {}
-sleep_time=60
+sleep_time=90
 
 target_chat_ids = {}
 deliver_message=5
