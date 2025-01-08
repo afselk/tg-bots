@@ -94,7 +94,7 @@ async def forward_messages(event):
         else:
             author_name = "Unknown"
 
-        target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"message":event.message.message})
+        target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"id":event.message.id,"message":event.message.message})
 
         for target_chat_id in target_chat_ids[str(event.chat_id)]["direct_forward_to"]:
             try:
@@ -104,10 +104,22 @@ async def forward_messages(event):
         if len(target_chat_ids[str(event.chat_id)]["messages"])>=deliver_message:
             for forward_to in target_chat_ids[str(event.chat_id)]["batch_forward_to"]:
                 try:
-                    await client.send_message(int(forward_to), "The following are new messages from the Telegram chats: "+str(target_chat_ids[str(event.chat_id)]["messages"]))
+                    await client.send_message(int(forward_to), "The following are new messages from the Telegram chats: "+str([{k: v for k, v in item.items() if k != "id"} for item in target_chat_ids[str(event.chat_id)]["messages"]]))
                 except Exception as e:
                     print(f"[DEBUG] Failed sending request to chat_id: {e}")
             target_chat_ids[str(event.chat_id)]["messages"]=[]
+
+@client.on(events.MessageDeleted)
+async def on_message_deleted(event):
+    global target_chat_ids
+    for target in target_chat_ids.keys():
+        find_message_to_delete=False
+        for message in target_chat_ids[target]["messages"]:
+            if message['id']==event.deleted_id:
+                find_message_to_delete=True
+        if find_message_to_delete:
+            target_chat_ids[target]["messages"]=[obj for obj in target_chat_ids[target]["messages"] if obj.get("id") != event.deleted_id]
+
 
 print("Bot is running... Press Ctrl+C to stop.")
 client.start()

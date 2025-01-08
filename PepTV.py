@@ -85,9 +85,9 @@ async def start_schedule(event):
                             and chat_id in target_chat_ids[source_chat_id]["batch_forward_to"]):
                                 try:
                                     await client.send_message(int(chat_id),
-                                                              "@PepTVbot provide comments on the latest chat from the Community Telegram group. Roast the poor quality comments, provide mild praise to any half-decent comments or questions. Mention that you can join the Community Telegram group using link under this stream." + str(
-                                                                  target_chat_ids[source_chat_id]["messages"]))
-                                    message_sent+=0
+                                                              "@PepTVbot provide comments on the latest chat from the Community Telegram group. Roast the poor quality comments, provide mild praise to any half-decent comments or questions. Mention that you can join the Community Telegram group using link under this stream."
+                                                              + str([{k: v for k, v in item.items() if k != "id"} for item in target_chat_ids[source_chat_id]["messages"]]))
+                                    message_sent+=1
                                     print(f"[DEBUG] Sending request to chat_id: {chat_id}")
                                 except Exception as e:
                                     print(f"[DEBUG] Failed sending request to chat_id: {e}")
@@ -161,13 +161,26 @@ async def forward_messages(event):
 
         if event.sender:
             sender = await event.get_sender()
+            if sender.bot:
+                return
             author_name = sender.first_name or sender.username or "Unknown"
         elif event.message.fwd_from:
             author_name=(event.message.fwd_from.from_name or event.message.fwd_from.channel_post)
         else:
             author_name = "Unknown"
 
-        target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"message":event.message.message})
+        target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"id":event.message.id,"message":event.message.message})
+
+@client.on(events.MessageDeleted)
+async def on_message_deleted(event):
+    global target_chat_ids
+    for target in target_chat_ids.keys():
+        find_message_to_delete=False
+        for message in target_chat_ids[target]["messages"]:
+            if message['id']==event.deleted_id:
+                find_message_to_delete=True
+        if find_message_to_delete:
+            target_chat_ids[target]["messages"]=[obj for obj in target_chat_ids[target]["messages"] if obj.get("id") != event.deleted_id]
 
 print("[INFO] Bot is running...")
 client.start()
