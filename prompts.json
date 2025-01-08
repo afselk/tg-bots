@@ -15,7 +15,7 @@
        "@PepTVbot, give an opinionated rant about a recent news story, with the tone of a conspiracy theorist who is both completely sure that they are right, and also absolutely insane. Keep it under two paragraphs.",
        "@PepTVbot, report the breaking news as though you're an overly dramatic soap opera character. Include a personal insult for each of the characters involved. Keep it concise, under two paragraphs.",
        "@PepTVbot, present the latest news like you're a sports commentator, but for a competition where all the participants are useless. Keep it under two paragraphs, but be sure to name the most idiotic moment from each story.",
-        "@PepTVbot, do a musical summary of the last 6 hours (you should mention this in a text) news with the tone of a broken karaoke machine. Two short verses, and a short chorus, then some insults about each song. Keep it under 100 words.",
+        "@PepTVbot, create a summary of the last 6 hours news in the form of a well structured, but poorly written poem. Wrote the poem as spoken, without titles or headings. You introduce it by stating that you think you have created a masterpiece of enlightened verse. Keep the poem itself to two short verses, then ask if they can tell how much effort you put into the poem in a sarcastic manner. Keep it under 100 words.",
         "@PepTVbot, interpret the most relevant news using a theatrical tone, as though you're reading it from an old manuscript, and everyone involved should be ashamed. Keep it short, one or two paragraphs is fine."
     ],
      [
@@ -62,6 +62,7 @@
       "@PepTVbot, insult the audience for being a bunch of degenerate smoothbrains for even listening to your show. Keep it short, one sentence of concentrated hate.",
      "@PepTVbot, call out the listeners for their poor life choices and lack of intelligence. One short sentence, and make it hurt.",
       "@PepTVbot, berate the audience for being a waste of your time. Make it a short sentence and make them understand that you despise them."
-     ]
+     ],
+  []
 ],
-"weights":[10,2,2,4,4,4,3,3,3]}
+"weights":[10,2,2,4,4,4,3,3,3,100]}

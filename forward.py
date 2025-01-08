@@ -72,7 +72,7 @@ async def stop_forwarding(event):
 @client.on(events.NewMessage(pattern='all tg chats load stop'))
 async def stop_all_forwarding(event):
     global target_chat_ids
-    for chat_id in target_chat_ids.keys():
+    for chat_id in list(target_chat_ids.keys()):
         for forward_type in ["batch_forward_to","direct_forward_to"]:
             if str(event.chat_id) in target_chat_ids[chat_id][forward_type]:
                 target_chat_ids[chat_id][forward_type].remove(str(event.chat_id))
