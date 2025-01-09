@@ -156,7 +156,6 @@ async def stop_forwarding(event):
 @client.on(events.NewMessage())
 async def forward_messages(event):
     global target_chat_ids
-    print (target_chat_ids)
     if str(event.chat_id) in target_chat_ids.keys():
 
         if event.sender:
@@ -168,8 +167,8 @@ async def forward_messages(event):
             author_name=(event.message.fwd_from.from_name or event.message.fwd_from.channel_post)
         else:
             author_name = "Unknown"
-
-        target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"id":event.message.id,"message":event.message.message})
+        if len(event.message.message)<200:
+            target_chat_ids[str(event.chat_id)]["messages"].append({"author":author_name,"id":event.message.id,"message":event.message.message})
 
 @client.on(events.MessageDeleted)
 async def on_message_deleted(event):
