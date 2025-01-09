@@ -88,10 +88,10 @@ async def start_schedule(event):
                                                               "@PepTVbot provide comments on the latest chat from the Community Telegram group. Roast the poor quality comments, provide mild praise to any half-decent comments or questions. Mention that you can join the Community Telegram group using link under this stream."
                                                               + str([{k: v for k, v in item.items() if k != "id"} for item in target_chat_ids[source_chat_id]["messages"]]))
                                     message_sent+=1
-                                    print(f"[DEBUG] Sending request to chat_id: {chat_id}")
+                                    target_chat_ids[source_chat_id]["messages"] = []
                                 except Exception as e:
                                     print(f"[DEBUG] Failed sending request to chat_id: {e}")
-                            target_chat_ids[source_chat_id]["messages"] = []
+
                         if message_sent:
                             await asyncio.sleep(sleep_time)
                     else:
@@ -177,10 +177,10 @@ async def on_message_deleted(event):
     for target in target_chat_ids.keys():
         find_message_to_delete=False
         for message in target_chat_ids[target]["messages"]:
-            if message['id']==event.deleted_id:
+            if message['id'] in event.deleted_ids:
                 find_message_to_delete=True
         if find_message_to_delete:
-            target_chat_ids[target]["messages"]=[obj for obj in target_chat_ids[target]["messages"] if obj.get("id") != event.deleted_id]
+            target_chat_ids[target]["messages"]=[obj for obj in target_chat_ids[target]["messages"] if obj.get("id") not in event.deleted_ids]
 
 print("[INFO] Bot is running...")
 client.start()
