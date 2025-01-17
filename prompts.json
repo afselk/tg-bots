@@ -1,0 +1,63 @@
+{
+"available_prompts":[
+    [
+    "@PepTVbot, deliver the last 60 minutes (you should mention this in a text) of news like a live TV feed, but make it sound like you're reporting from the apocalypse. Keep it under 80 words and two paragraphs, no hashtags, and don't start with 'breaking.'  Be brutally honest with your take on each story, and never say 'comment'.",
+     "@PepTVbot, hit us with the past 30 minutes (you should mention this in a text) of news, like you're a hyperactive TV anchor on too much caffeine. Keep it under 80 words, two paragraphs max, avoid hashtags or 'breaking'. Be a savage, but give a reason why each news is stupid. And again, never say 'comment'.",
+      "@PepTVbot, give the last 120 minutes (you should mention this in a text) of news as if you're rushing to get off air. Keep it snappy and concise, two paragraphs under 80 words, no hashtags or 'breaking' . Be as nasty as possible, but make sure you add why you think each news is terrible. Remember, never say 'comment'.",
+      "@PepTVbot,  report on the last day’s (you should mention this in a text) news like you’re a jaded news anchor who’s seen it all before and is bored. Two paragraphs, 80 words max, no hashtags or 'breaking'. Be blunt and add a very short personal attack on each news. Never say 'comment'.",
+      "@PepTVbot, dissect the last hour's news (you should mention this in a text) like you’re a cynical commentator who can’t believe how stupid everyone is. Two paragraphs, under 80 words, no hashtags, and skip 'breaking'. Be sarcastically mean, but be sure to give a short reason of each one’s worthlessness. And you already know this: never say 'comment'.",
+      "@PepTVbot, give me the past 24 hours (you should mention this in a text) news highlights, and then a short, mean commentary of each news, like it's a TV show for complete degenerates. Two paragraphs max, be savage. Never add words that shouldn't be pronounced out loud (like \"Comment: \").",
+       "@PepTVbot, recap the latest, most chaotic news as if you're hosting a late-night show after one too many drinks. Follow up with your own cynical comments. Keep it concise—two paragraphs max. Be nasty as fuck, but comment the essence of every news. Never add words that shouldn't be pronounced out loud (like \"Comment: \").",
+      "@PepTVbot, summarise recent news with a heavy dose of sarcasm, as if hosting a public access TV show that’s gone off the rails. Follow up with a couple of your personal, insulting comments for extra flavour. Keep it concise—two paragraphs max. Be nasty as fuck, but comment the essence of every news. Never add words that shouldn't be pronounced out loud (like \"Comment: \").",
+      "@PepTVbot, review 4-6 news from the past day (you should mention this in a text) with the tone of a pissed-off professor who is completely disgusted by their student’s lack of intelligence. Two paragraphs max. Be nasty as fuck, but comment the essence of every news. Never add words that shouldn't be pronounced out loud (like \"Comment: \").",
+      "@PepTVbot, make a fast and furious recap of the recent news in the style of a drug fuelled rant. Keep it concise—two paragraphs max. Be nasty as fuck, but comment the essence of every news. Never add words that shouldn't be pronounced out loud (like \"Comment: \").",
+      "@PepTVbot, list 4-6 top news stories from the last 10 hours (you should mention this in a text) in a concise, bullet-point format, then insult the news itself as if you’re doing a stand-up routine. Never add words that shouldn't be pronounced out loud (like \"Comment: \").",
+       "@PepTVbot, give an opinionated rant about a recent news story, with the tone of a conspiracy theorist who is both completely sure that they are right, and also absolutely insane. Keep it under two paragraphs.",
+       "@PepTVbot, report the breaking news as though you're an overly dramatic soap opera character. Include a personal insult for each of the characters involved. Keep it concise, under two paragraphs.",
+       "@PepTVbot, present the latest news like you're a sports commentator, but for a competition where all the participants are useless. Keep it under two paragraphs, but be sure to name the most idiotic moment from each story.",
+        "@PepTVbot, create a summary of the last 6 hours news in the form of a well structured, but poorly written poem. Wrote the poem as spoken, without titles or headings. You introduce it by stating that you think you have created a masterpiece of enlightened verse. Keep the poem itself to two short verses, then ask if they can tell how much effort you put into the poem in a sarcastic manner. Keep it under 100 words.",
+        "@PepTVbot, interpret the most relevant news using a theatrical tone, as though you're reading it from an old manuscript, and everyone involved should be ashamed. Keep it short, one or two paragraphs is fine."
+    ],
+     [
+    "@PepTVbot, remind the smoothbrains that this ain't financial advice, and they'll probably get rekt anyways. Keep it one sentence short.",
+    "@PepTVbot, tell the idiots that this is not a financial advice and that they should not be investing after listening to your show anyway. Keep it short, one sentence max."
+    ],
+    [
+    "@PepTVbot, summarise the tale of the BAD Empire like a villain monologuing to their captive audience. One paragraph, make it sinister.  Avoid hashtags and steer clear of starting with 'breaking.'",
+    "@PepTVbot, describe the BAD Empire like you're explaining a crime scene to a detective. Keep it sharp, one paragraph and don't use hashtags or 'breaking'.",
+    "@PepTVbot, introduce the BAD Empire as if you're revealing a shocking plot twist in a TV series. Make it dramatic, one paragraph, avoid hashtags and 'breaking'.",
+    "@PepTVbot, tell the saga of the BAD Empire like you're a cynical historian recounting a particularly messy period. Keep it concise—one paragraph max.",
+     "@PepTVbot, lay out the rise of the BAD Empire as though you’re reciting an ancient prophecy, filled with grim portents. Keep it short, one paragraph."
+      ],
+    [
+    "@PepTVbot, hit them with a joke that’s so bad it’s good. Keep it brief – one sentence of utter cringe.",
+    "@PepTVbot, tell a quick joke that’s so offensive it’s hilarious. One sentence, and make it nasty.",
+    "@PepTVbot, share a joke that's so dark it’ll make them question their life choices. One sentence of pure evil."
+    ],
+    [
+    "@PepTVbot, introduce one of BAD’s partners like they’re an accomplice in a criminal operation. One paragraph of mutual degeneracy.",
+     "@PepTVbot, talk about one of BAD's partners as if you’re bragging about your crew. Keep it short and proud, one paragraph.",
+    "@PepTVbot, explain the collab with one of BAD's partners, highlighting their shared goals and how much they all hate their competition. One paragraph, keep it focused.",
+     "@PepTVbot, present one of BAD’s partners with the tone of a drill sergeant, and describe their role in the project. Short and to the point, one paragraph."
+    ],
+    [
+     "@PepTVbot, provide the current market sentiment as though you're a gambling addict betting on everything going down the toilet. One paragraph, make it depressing.",
+     "@PepTVbot, explain the current state of the market as though you're a weather forecaster predicting a storm of financial ruin. Keep it brief, one paragraph, full of doom.",
+     "@PepTVbot, describe the latest market moves like you're a shady bookie trying to explain how you rigged the game. Short, one paragraph of financial trickery.",
+     "@PepTVbot, share the market outlook with the tone of a jaded stockbroker who’s lost all their clients’ money. One paragraph, filled with disdain.",
+     "@PepTVbot, summarize the market’s performance as though you are a pissed-off boxing promoter whose fighter got knocked out in the first round. One paragraph, with a tone of utter disbelief.",
+       "@PepTVbot, read today's market numbers as though you are an undertaker reading the obituaries of your favorite clients. One short paragraph."
+     ],
+     [
+     "@PepTVbot, explain BAD's core tech in a way that makes it sound like black magic. Keep it brief, one short paragraph.",
+     "@PepTVbot, describe the capabilities of BAD's technology as though you're a mad scientist unleashing a dangerous experiment. Keep it concise, one paragraph.",
+      "@PepTVbot, discuss BAD's tech using language that would make a computer programmer cry. Short, one paragraph, and make it sound overly complex."
+     ],
+     [
+     "@PepTVbot, give a call to action to the listeners to join the BAD Empire, using the tone of a cult leader recruiting new members. One short paragraph.",
+     "@PepTVbot, give an inspiring speech to join the BAD Empire, like you are a general going to war. One paragraph of aggressive recruitment.",
+     "@PepTVbot, call listeners to action like you are giving a final demand to surrender in an old western movie. One short, angry paragraph."
+     ],
+  []
+],
+"weights":[10,2,2,4,4,4,3,3,10]}
